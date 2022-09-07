@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const square = require('./middlewares/validate-number')
+const {squareTheNum} = require('./middlewares/validate-number')
 const handleError = require('./error-handlers/500')
 
 const app = express()
@@ -12,7 +12,7 @@ app.get('/',(req,res)=>{
     res.status(200).send('Hello Home')
 })
 
-app.get('/square',square,(req,res)=>{
+app.get('/square',squareTheNum,(req,res)=>{
     res.status(200).json({
         num : req.num
     })
@@ -20,10 +20,9 @@ app.get('/square',square,(req,res)=>{
 
 app.use(handleError)
 
-function start(p) {
-    let PORT = p || 3001
-    app.listen(process.env.PORT|| PORT, ()=>{
-        console.log(`Helllo the server is Running ..... ${PORT} `)
+function start(port) {
+    app.listen(port, ()=>{
+        console.log(`Helllo the server is Running ..... ${port} `)
     })
 }
 
