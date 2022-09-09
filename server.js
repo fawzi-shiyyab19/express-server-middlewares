@@ -14,7 +14,7 @@ app.get('/',(req,res)=>{
 
 app.get('/square',squareTheNum,(req,res)=>{
     res.status(200).json({
-        num : req.num
+        num : req.squared
     })
 })
 
